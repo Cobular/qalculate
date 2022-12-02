@@ -1,0 +1,3 @@
+[submodule "qalculate-wasm"]
+	path = qalculate-wasm
+	url = git@github.com:Cobular/qalculate-wasm.git
