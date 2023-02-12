@@ -8,19 +8,17 @@ export default function Command() {
 
   const { isLoading, data } = usePromise(load_qalc);
 
-  return (
-    <div>
-<List 
-      isLoading={isLoading}
-      searchBarPlaceholder="Calculate something..." 
-      onSearchTextChange={setCalcText}
-      throttle
-    >
-    </List>
-    <Detail markdown={data?.calculateAndPrint(calcText, 1000)} />
+  if (data === undefined) {
+    return <Detail isLoading />;
+  }
 
-    </div>
-    
+  const result = data.calculateAndPrint(calcText, 1000);
+  const input_resp = data.print(data.parse(calcText, { base: 10}), 100, {base: 10})
+
+  return (
+    <List isLoading={isLoading} searchBarPlaceholder="Calculate something..." onSearchTextChange={setCalcText} throttle >
+      <List.Item title={result} subtitle={{value: input_resp}} />
+    </List>
   );
 }
 
