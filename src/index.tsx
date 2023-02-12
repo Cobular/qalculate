@@ -1,35 +1,26 @@
-import { ActionPanel, Action, List } from "@raycast/api";
-import { useFetch, Response } from "@raycast/utils";
+import { ActionPanel, Action, List, Detail } from "@raycast/api";
+import { Response, usePromise } from "@raycast/utils";
 import { useState } from "react";
-import { URLSearchParams } from "node:url";
-import Thing from "./lib/qalculate_wrapper"
+import { load_qalc } from "./lib/manager";
 
 export default function Command() {
-  console.log("test")
-  console.log(Thing.calc)
-  const [searchText, setSearchText] = useState("");
-  const { data, isLoading } = useFetch(
-    "https://api.npms.io/v2/search?" +
-      // send the search query to the API
-      new URLSearchParams({ q: searchText.length === 0 ? "@raycast/api" : searchText }),
-    {
-      parseResponse: parseFetchResponse,
-    }
-  );
+  const [calcText, setCalcText] = useState("");
+
+  const { isLoading, data } = usePromise(load_qalc);
 
   return (
-    <List
+    <div>
+<List 
       isLoading={isLoading}
-      onSearchTextChange={setSearchText}
-      searchBarPlaceholder="Search npm packages..."
+      searchBarPlaceholder="Calculate something..." 
+      onSearchTextChange={setCalcText}
       throttle
     >
-      <List.Section title="Results" subtitle={data?.length + ""}>
-        {data?.map((searchResult) => (
-          <SearchListItem key={searchResult.name} searchResult={searchResult} />
-        ))}
-      </List.Section>
     </List>
+    <Detail markdown={data?.calculateAndPrint(calcText, 1000)} />
+
+    </div>
+    
   );
 }
 
@@ -90,5 +81,4 @@ interface SearchResult {
   name: string;
   description?: string;
   username?: string;
-  url: string;
 }
