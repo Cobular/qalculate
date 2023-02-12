@@ -2,8 +2,11 @@ import { ActionPanel, Action, List } from "@raycast/api";
 import { useFetch, Response } from "@raycast/utils";
 import { useState } from "react";
 import { URLSearchParams } from "node:url";
+import Thing from "./lib/qalculate_wrapper"
 
 export default function Command() {
+  console.log("test")
+  console.log(Thing.calc)
   const [searchText, setSearchText] = useState("");
   const { data, isLoading } = useFetch(
     "https://api.npms.io/v2/search?" +
