@@ -2,21 +2,21 @@
 
 export class MathStructure {};
 export interface ParseOptions {
-  base?: number;
-  preserve_format?: boolean;
+  base: number;
+  preserve_format: boolean;
 }
 
 export interface PrintOptions {
-  base?: number;
-  use_reference_names?: boolean;
-  use_unit_prefixes?: boolean;
-  use_unicode_signs?: boolean;
-  preserve_format?: boolean;
-  allow_factorization?: boolean;
-  spell_out_logical_operators?: boolean;
-  indicate_infinite_series?: boolean;
-  excess_parenthesis?: boolean;
-  abbreviate_names?: boolean;
+  base: number;
+  use_reference_names: boolean;
+  use_unit_prefixes: boolean;
+  use_unicode_signs: boolean;
+  preserve_format: boolean;
+  allow_factorization: boolean;
+  spell_out_logical_operators: boolean;
+  // indicate_infinite_series: boolean;
+  // excess_parenthesis: boolean;
+  abbreviate_names: boolean;
 }
 
 export class Calculator {

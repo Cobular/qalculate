@@ -11,6 +11,8 @@ export async function load_qalc(): Promise<Calculator> {
         calculator.loadGlobalDefinitions();
         calculator.loadGlobalCurrencies();
         calculator.useIntervalArithmetic(false);
+        console.log("Loaded qalc");
+        
         resolve(calculator);
       })
       .catch((err) => {
