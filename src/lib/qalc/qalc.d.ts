@@ -1,6 +1,6 @@
 /// <reference types="emscripten" />
 
-export class MathStructure {};
+export class MathStructure {}
 export interface ParseOptions {
   base: number;
   preserve_format: boolean;
@@ -22,18 +22,18 @@ export interface PrintOptions {
 export class Calculator {
   constructor();
   loadGlobalDefinitions(): void;
-  loadGlobalCurrencies(): void
+  loadGlobalCurrencies(): void;
   calculateAndPrint(input: string, timeout: number): string;
   parse(input: string, options: ParseOptions): MathStructure;
   print(structure: MathStructure, timeout: number, options: PrintOptions): string;
   useIntervalArithmetic(use: boolean): void;
 }
 
-export interface QalcModule extends EmscriptenModule {
+export interface QalcModule {
   Calculator: typeof Calculator;
 }
 
 // Declare any name
-declare const qalcModule: QalcModule;
+declare const qalcModule: () => Promise<QalcModule>;
 // Only for -s MODULARIZE=1
 export = qalcModule;

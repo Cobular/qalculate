@@ -1,14 +1,14 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "qalculate",
-  "title": "Qalculate",
+  "title": "Qalculate - The Ultimate Desktop Calculator",
   "description": "Use Qualculate, the ultimate desktop calculator, directly in Raycast!",
   "icon": "command-icon.png",
   "author": "Cobular",
   "categories": [
-    "Productivity",
+    "Applications",
     "Developer Tools",
-    "Data"
+    "Productivity"
   ],
   "license": "MIT",
   "commands": [
